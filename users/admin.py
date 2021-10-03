@@ -9,7 +9,7 @@ from .forms import CustomUserChangeForm, CustomUserCreationForm
 class CustomUserAdmin(UserAdmin):
     fieldsets = (
         (None, {'fields': ('email' , 'password')}),
-        (_('Personal info'), {'fields': ('first_name', 'last_name', 'email', 'company_name', 'section_name', 'post_name')}),
+        (_('Personal info'), {'fields': ('first_name', 'last_name', 'company_name', 'section_name', 'post_name')}),
         (_('Permissions'), {
             'fields': ('is_active', 'is_staff', 'is_superuser'),
         }),
@@ -23,9 +23,9 @@ class CustomUserAdmin(UserAdmin):
     )
     form = CustomUserChangeForm
     add_form = CustomUserCreationForm
-    list_display = ('email', 'first_name', 'last_name', 'company_name', 'is_staff')
+    list_display = ('first_name', 'last_name', 'company_name', 'is_staff')
     list_filter = ('is_staff', 'is_superuser', 'is_active', 'groups')
     search_fields = ('first_name', 'last_name', 'email' ,'company_name')
-    ordering = ('first_name'+'last_name')
+    ordering = ('company_name',)
 
 admin.site.register(CustomUser, CustomUserAdmin)
