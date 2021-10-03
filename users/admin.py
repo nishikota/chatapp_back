@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import ugettext_lazy as _
+
+from users.models import CustomUser
 from .forms import CustomUserChangeForm, CustomUserCreationForm
 
 # Register your models here.
@@ -25,3 +27,5 @@ class CustomUserAdmin(UserAdmin):
     list_filter = ('is_staff', 'is_superuser', 'is_active', 'groups')
     search_fields = ('first_name', 'last_name', 'email' ,'company_name')
     ordering = ('first_name'+'last_name')
+
+admin.site.register(CustomUser, CustomUserAdmin)
