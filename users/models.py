@@ -6,6 +6,7 @@ from django.core.mail import send_mail
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+from appBackend.models import Room
 
 # Create your models here.
 class CustomUserManager(BaseUserManager):
@@ -46,6 +47,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     blank=False)
     section_name = models.CharField('部署名', max_length=100, blank=True)
     post_name = models.CharField('役職', max_length=100, blank=True)
+    # room_id = models.ManyToManyField(Room)
 
     is_staff = models.BooleanField(
         _('staff status'),

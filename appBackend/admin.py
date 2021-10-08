@@ -1,6 +1,8 @@
 from django.contrib import admin
-from .models import Room
+from .models import Room, Talk
 
 # Register your models here.
 
-admin.site.register(Room)
+appFunction = [Room, Talk]
+
+admin.site.register(appFunction)
